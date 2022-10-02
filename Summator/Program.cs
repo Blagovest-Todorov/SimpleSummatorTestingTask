@@ -6,7 +6,7 @@ namespace Summator
     {
         static void Main(string[] args)
         {
-            int result = Summator.Sum(new int[] { 1, 2, 3, 4, 5, 6});
+            double result = Summator.Sum(new double[] { 1, 2, 3, 4, 5, 6});
 
             if (result == 20)
             {
@@ -16,6 +16,6 @@ namespace Summator
             {
                 Console.WriteLine("test failed");
             }
-        }
+        }        
     }
 }
