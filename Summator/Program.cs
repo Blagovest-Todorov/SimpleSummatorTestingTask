@@ -6,7 +6,9 @@ namespace Summator
     {
         static void Main(string[] args)
         {
-            double result = Summator.Sum(new double[] { 1, 2, 3, 4, 5, 6});
+            Summator summator = new Summator();
+
+            double result = summator.Sum(new double[] { 1, 2, 3, 4, 5, 6});
 
             if (result == 20)
             {
