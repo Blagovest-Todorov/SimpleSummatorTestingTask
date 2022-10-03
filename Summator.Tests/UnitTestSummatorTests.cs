@@ -3,21 +3,33 @@ using System;
 
 namespace Summator.Tests
 {
+    [TestFixture] // optional notation
     public class UnitTestsSummatorTests
     {
+        private Summator summator;
+
+        [SetUp]
+        public void SetUp() 
+        {
+            summator = new Summator();
+            Console.WriteLine("Test started here" + DateTime.Now.Ticks.ToString());
+        }
+
+
         [Test]
         public void Test_Sum_TwoPositiveNumbers()
         {
-            double actual = Summator.Sum(new double[] { 5, 7 });
+            double actual = summator.Sum(new double[] { 5, 7 });
             double expected = 12d;
 
             Assert.That(expected == actual);
         }
 
         [Test]
+        [Category("Critical")] // Test category will appear into the TestExplorer
         public void Test_Sum_OnePositiveNumber()
         {
-            double actual = Summator.Sum(new double[] { 5 });
+            double actual = summator.Sum(new double[] { 5 });
             double expected = 5d;
             Assert.That(actual == expected);
         }
@@ -25,7 +37,7 @@ namespace Summator.Tests
         [Test]
         public void Test_Sum_TwoNegativeNumbers()
         {
-            double actual = Summator.Sum(new double[] { -5, -10 });
+            double actual = summator.Sum(new double[] { -5, -10 });
             double expected = -15d;
 
             Assert.That(expected == actual);
@@ -36,29 +48,29 @@ namespace Summator.Tests
         {
             double expected = 120;
 
-            Assert.That(expected == Summator.Sum(new double[] { 120 }));
+            Assert.That(expected == summator.Sum(new double[] { 120 }));
         }
 
         [Test]
-        public static void Sum_EmptyArray()
+        public void Sum_EmptyArray()
         {
             double expected = 0d;
 
-            Assert.That(expected == Summator.Sum(new double[] { }));
+            Assert.That(expected == summator.Sum(new double[] { }));
         }
 
         [Test]
-        public static void Test_Sum_BigValues()
+        public void Test_Sum_BigValues()
         {
-            double actual = Summator.Sum(new double[] { 1500000000, 2000000000 });
+            double actual = summator.Sum(new double[] { 1500000000, 2000000000 });
             double expected = 3500000000;
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public static void Test_ArrayAverageNumber_When_ArrayLengthIsBiggerThanZero() 
+        public void Test_ReturnArrayAverageNumber_When_ArrayLengthIsBiggerThanZero() 
         {
-            double actual = Summator.ReturnAverageNumberFromArray(
+            double actual = summator.ReturnAverageNumberFromArray(
                 new double[] {10, 0, 5 });
 
             double expected = 5;
@@ -67,14 +79,21 @@ namespace Summator.Tests
         }
 
         [Test]
-        public static void Test_ArrayAverageNumber_When_ArrayLengthIsZero()
+        public void Test_ReturnArrayAverageNumber_When_ArrayLengthIsZero()
         {
-            double actual = Summator.ReturnAverageNumberFromArray(
+            double actual = summator.ReturnAverageNumberFromArray(
                 new double[] {});
 
             double expected = 0;
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TearDown]
+        public void TearDown() 
+        {
+            summator = null;
+            Console.WriteLine("Test ended here " + DateTime.Now);
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Summator
 {
-    public static class Summator
+    public class Summator
     {
-        public static double Sum(double[] arr) 
+        public double Sum(double[] arr) 
         {           
                 double sum = 0d;
 
@@ -19,7 +19,7 @@ namespace Summator
 
         }
 
-        public static double ReturnAverageNumberFromArray(double[] arr )
+        public double ReturnAverageNumberFromArray(double[] arr )
         {           
 
             double sumOfArrNumbers = Sum(arr);
